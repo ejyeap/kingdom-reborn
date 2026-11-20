@@ -28,4 +28,4 @@ Data is stored under a SHA-256 hash of the sync code; the table is only reachabl
 
 ## Deploy
 
-Static files on Vercel (project `kingdom-reborn`). Any static host works.
+Static files on Vercel (project `kingdom-reborn`), connected to this repo: every push to `main` deploys to production automatically. Remember to bump `VERSION` in `sw.js` when app files change.
