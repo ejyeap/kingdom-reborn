@@ -4,7 +4,7 @@
    The whole kingdom is stored in Supabase under a SHA-256 hash of that code.
    The Claude API key is stored separately on each device and never syncs. */
 (function(){
-const CFG={url:'',key:''}; // Supabase project URL and publishable key
+const CFG={url:'https://lrmzsruxlifpmcnjzema.supabase.co',key:'sb_publishable_ooxT5EldojjkHRH89vKF-g_9mtoU-b1'}; // Supabase project URL and publishable key (safe to be public)
 const SK='kingdomReborn.sync',BK='kingdomReborn.preSync';
 const ready=()=>!!(CFG.url&&CFG.key);
 let M=(()=>{try{return JSON.parse(localStorage.getItem(SK))||{}}catch(e){return {}}})();
