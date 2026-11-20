@@ -1,5 +1,5 @@
 // Offline cache for Kingdom Reborn. Bump VERSION when files change.
-const VERSION = 'kr-v8';
+const VERSION = 'kr-v9';
 const FILES = ['./', './index.html', './app1.js', './app2.js', './app3.js', './app4.js', './keeper.js', './boss1.js', './boss2.js', './boss3.js', './juice.js', './sync.js', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', e => {

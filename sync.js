@@ -120,7 +120,10 @@ function fromLink(){const m=location.hash.match(/sync=([A-Za-z0-9-]+)/);if(!m)re
   if(!ready())return;const code=fmtCode(m[1]);if(M.code===code)return;
   setTimeout(()=>{if(confirm('Link this device to your kingdom? Its current data will be replaced by the synced one (a backup is kept).')){join(code);TAB='me';render()}},600)}
 fromLink();
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')sync()});
+// Send pending changes right away when the app is closed or hidden, instead of waiting for the 4-second delay.
+const flush=()=>{if(M.code&&hash(JSON.stringify(S))!==M.h){clearTimeout(timer);sync()}};
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')sync();else flush()});
+window.addEventListener('pagehide',flush);
 window.addEventListener('online',()=>sync());
 window.addEventListener('focus',()=>sync());
 setInterval(()=>{if(document.visibilityState==='visible')sync()},45000);
