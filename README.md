@@ -15,6 +15,7 @@ Plain HTML/CSS/JS, no build step. Scripts load in this order (later files extend
 | `boss1.js`–`boss3.js` | Boss Battles, Lair filter/sort, Archive, Mythic (SS) bosses with minions |
 | `juice.js` | Combos, treasure chests, shiny bosses, Bestiary, rested bonus |
 | `sync.js` | Optional phone ⇄ computer sync through Supabase, using a private sync code |
+| `voice.js` | Floating mic: spoken instructions become quest changes (offline rules, or Claude via the Keeper key when online), plus quest tags and tag filters |
 | `sw.js` | Offline cache. Bump `VERSION` whenever files change |
 | `supabase/sync.sql` | Database setup for sync |
 

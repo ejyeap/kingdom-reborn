@@ -374,6 +374,15 @@ const css=document.createElement('style');css.textContent=`
 @keyframes kd{0%,80%,100%{opacity:.25}40%{opacity:1}}
 button[disabled]{opacity:.5}`;document.head.appendChild(css);
 
-window.Keeper={view,todayCard,after,prefill:t=>{draft=t},send};
+/* One structured JSON answer (used by voice quests). Null when offline, keyless, refused or cut off. */
+async function structured(system,messages,schema){
+  if(!apiKey()||!navigator.onLine)return null;
+  const k=K(),A=await sdk(),c=client(A);
+  const msg=await c.beta.messages.create(params(k,messages,system,{max_tokens:8000,output_config:{effort:'low',format:{type:'json_schema',schema}}}));
+  trackUsage(msg.model||k.model,msg.usage);save();
+  if(msg.stop_reason==='refusal'||msg.stop_reason==='max_tokens')return null;
+  const t=(msg.content||[]).find(b=>b.type==='text');
+  try{return t?JSON.parse(t.text):null}catch(e){return null}}
+window.Keeper={view,todayCard,after,prefill:t=>{draft=t},send,structured,hasKey:()=>!!apiKey()};
 render();
 })();
